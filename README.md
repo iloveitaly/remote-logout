@@ -1,4 +1,4 @@
-# Logout of a macOS Remotely
+# Logout of a macOS User Remotely
 
 Mac OS allows you to set up another user on your computer which can be logged in remotely. Combine this with the amazing
 powers of Tailscale and it enables you to securely access your computer remotely regardless of where you are.
@@ -17,6 +17,10 @@ This little tool enables you to create a server with a single entry point which 
 [install.sh](./install.sh) does this for you.
 
 ## When Screensharing Breaks Your Window Manager
+
+Just getting beeping when attempting to use a window manager like Raycast or Rectangle?
+
+TODO detail attempts to fix this
 
 ## Inspiration
 
