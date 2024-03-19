@@ -2,11 +2,9 @@
 
 import os
 import sys
-import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
 import logging
-from logging.handlers import RotatingFileHandler
 
 # Set up logging
 logger = logging.getLogger("LogoutService")
@@ -16,9 +14,7 @@ logger.setLevel(logging.INFO)
 def get_whitelist_ips():
     # Fetch and process the whitelist IPs from the environment variable
     whitelist_env = os.getenv("LOGOUT_WHITELIST_IPS", "")
-    if whitelist_env:
-        return [ip.strip() for ip in whitelist_env.split(",")]
-    return []
+    return [ip.strip() for ip in whitelist_env.split(",")] if whitelist_env else []
 
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -63,16 +59,24 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=51789):
-    if len(sys.argv) > 1 and sys.argv[1] != "-":
-        log_file_path = sys.argv[1]
-        handler = RotatingFileHandler(log_file_path, maxBytes=50000, backupCount=1)
+    # Determine log file path based on argument provided or use default
+    log_file_path = (
+        sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] != "-" else "./logout.log"
+    )
+
+    if log_file_path != "-":
+        # Set up file logging
+        handler = logging.FileHandler(log_file_path, mode="a")
         logger.addHandler(handler)
-    elif sys.argv[1] == "-":
-        # Logging to stdout
-        logging.basicConfig(level=logging.INFO)
+        handler.setFormatter(
+            logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+        )
     else:
-        # Default logging to stdout if no argument is provided
-        logging.basicConfig(level=logging.INFO)
+        # Log to stdout
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        )
 
     ip = "0.0.0.0"  # Bind to all available interfaces
     server_address = (ip, port)
