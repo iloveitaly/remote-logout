@@ -16,6 +16,8 @@ This little tool enables you to create a server with a single entry point which 
 
 [install.sh](./install.sh) does this for you.
 
+## When Screensharing Breaks Your Window Manager
+
 ## Inspiration
 
 * https://superuser.com/questions/229773/run-command-on-startup-login-mac-os-x
