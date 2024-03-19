@@ -1,0 +1,21 @@
+name: Repo Metadata Sync
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  repo_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetching Local Repository
+        uses: actions/checkout@v4
+      - name: Repo Sync
+        uses: kbrashears5/github-action-repo-sync@v2.0.0
+        with:
+          TYPE: npm
+          PATH: metadata.json
+          # gh secret set GH_PERSONAL_TOKEN --app actions --body TOKEN
+          TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}

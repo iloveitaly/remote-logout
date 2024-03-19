@@ -1,0 +1,5 @@
+{
+  "description": "Create a server that logs out of the current user to address MacOS's remote login issues",
+  "homepage": "https://github.com/iloveitaly/remote-logout",
+  "keywords": ["macos"]
+}
