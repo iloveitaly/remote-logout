@@ -14,7 +14,13 @@ This little tool enables you to create a server with a single entry point which 
 2. Use `.command` for the execution, which opens up a terminal window and runs the script.
 3. Add it to your login items
 
-[install.sh](./install.sh) does this for you.
+[install.sh](./install.sh) does this for you:
+
+```shell
+git clone https://github.com/iloveitaly/remote-logout
+cd remote-logout
+./install.sh
+```
 
 ## When Screensharing Breaks Your Window Manager
 
