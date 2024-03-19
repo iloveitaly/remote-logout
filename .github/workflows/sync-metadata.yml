@@ -12,8 +12,11 @@ jobs:
     steps:
       - name: Fetching Local Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Repo Sync
-        uses: kbrashears5/github-action-repo-sync@v2.0.0
+        uses: kbrashears5/github-action-repo-sync@v2
         with:
           TYPE: npm
           PATH: metadata.json
