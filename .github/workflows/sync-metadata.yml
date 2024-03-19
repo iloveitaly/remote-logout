@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Repo Sync
-        uses: kbrashears5/github-action-repo-sync@v2
+        uses: kbrashears5/github-action-repo-sync
         with:
           TYPE: npm
           PATH: metadata.json
