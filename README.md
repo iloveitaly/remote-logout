@@ -26,7 +26,7 @@ cd remote-logout
 
 Just getting beeping when attempting to use a window manager like Raycast or Rectangle?
 
-TODO detail attempts to fix this
+TODO detail attempts to fix this, WindowManager, boot via launchctl, etc.
 
 ## Inspiration
 
